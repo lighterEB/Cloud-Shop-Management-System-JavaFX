@@ -13,6 +13,7 @@ public class CloudShopManagementSystem extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(CloudShopManagementSystem.class.getResource("FXMLDocument.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("云购物");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

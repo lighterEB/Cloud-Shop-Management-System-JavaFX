@@ -28,7 +28,7 @@
                         <Hyperlink fx:id="si_forgotPass" layoutX="43.0" layoutY="239.0" prefHeight="21.0" prefWidth="79.0" text="忘记密码？" />
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="su_signupForm" layoutY="5.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@loginDesign.css">
+                <AnchorPane fx:id="su_signupForm" layoutY="5.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@loginDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="5.0">
                     <children>
                         <Label layoutX="43.0" layoutY="64.0" prefHeight="41.0" prefWidth="92.0" styleClass="head-label" stylesheets="@loginDesign.css" text="用户注册" textFill="#177569">
                             <font>
@@ -53,7 +53,7 @@
                         <Button fx:id="side_createBtn" layoutX="84.0" layoutY="335.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="41.0" prefWidth="121.0" styleClass="create-btn" stylesheets="@loginDesign.css" text="创建新用户" />
                         <Button fx:id="side_alreadyBtn" layoutX="84.0" layoutY="335.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="41.0" prefWidth="121.0" styleClass="create-btn" stylesheets="@loginDesign.css" text="已有用户" visible="false" />
                         <FontAwesomeIconView fill="#e4dbdb" glyphName="CLOUD" layoutX="84.0" layoutY="184.0" size="10em" wrappingWidth="131.8571424484253" />
-                        <Label layoutX="89.0" layoutY="191.0" prefHeight="24.0" prefWidth="132.0" text="云购物管理系统" textFill="#fcefef">
+                        <Label layoutX="89.0" layoutY="191.0" prefHeight="24.0" prefWidth="132.0" text="云购物管理系统" textFill="#fcefef" AnchorPane.leftAnchor="89.0">
                             <font>
                                 <Font size="16.0" />
                             </font>
