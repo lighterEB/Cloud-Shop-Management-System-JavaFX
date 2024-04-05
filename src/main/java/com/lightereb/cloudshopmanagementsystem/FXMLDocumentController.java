@@ -1,11 +1,21 @@
 package com.lightereb.cloudshopmanagementsystem;
 
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import org.w3c.dom.ls.LSException;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class FXMLDocumentController {
     @FXML
@@ -53,6 +63,19 @@ public class FXMLDocumentController {
     @FXML
     private TextField su_username;
 
+    private Connection connect;
+    private PreparedStatement prepare;
+    private ResultSet resultSet;
+
+    private final String[] questionList = {"妈妈的姓名？", "爸爸的姓名？", "童年的昵称？", "第一个宠物的名字？"};
+
+    public void regQuestionList() {
+
+        List<String> listQ = new ArrayList<String>(Arrays.asList(questionList));
+        ObservableList observableList = FXCollections.observableArrayList(listQ);
+        su_question.setItems(observableList);
+    }
+
     public void switchForm(ActionEvent event) {
         TranslateTransition slider = new TranslateTransition();
 
@@ -66,6 +89,7 @@ public class FXMLDocumentController {
                 side_createBtn.setVisible(false);
             });
             slider.play();
+            regQuestionList();
         } else if (event.getSource() == side_alreadyBtn) {
             slider.setNode(side_form);
             slider.setToX(0);
