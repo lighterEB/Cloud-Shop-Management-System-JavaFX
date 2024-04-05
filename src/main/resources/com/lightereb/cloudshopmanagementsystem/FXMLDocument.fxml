@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@loginDesign.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lightereb.cloudshopmanagementsystem.FXMLDocumentController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@loginDesign.css">
+            <children>
+                <AnchorPane fx:id="si_loginForm" layoutX="300.0" layoutY="5.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@loginDesign.css">
+                    <children>
+                        <Label layoutX="43.0" layoutY="64.0" prefHeight="41.0" prefWidth="92.0" styleClass="head-label" stylesheets="@loginDesign.css" text="用户登录" textFill="#177569">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="si_username" layoutX="47.0" layoutY="129.0" prefHeight="34.0" prefWidth="210.0" promptText="用户名" stylesheets="@loginDesign.css" />
+                        <PasswordField fx:id="si_password" layoutX="48.0" layoutY="190.0" prefHeight="34.0" prefWidth="210.0" promptText="密码" stylesheets="@loginDesign.css" />
+                        <Button fx:id="si_loginBtn" layoutX="106.0" layoutY="286.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="92.0" styleClass="login-btn" stylesheets="@loginDesign.css" text="登录" textFill="#43bfbb" />
+                        <Hyperlink fx:id="si_forgotPass" layoutX="43.0" layoutY="239.0" prefHeight="21.0" prefWidth="79.0" text="忘记密码？" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="su_signupForm" layoutY="5.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@loginDesign.css">
+                    <children>
+                        <Label layoutX="43.0" layoutY="64.0" prefHeight="41.0" prefWidth="92.0" styleClass="head-label" stylesheets="@loginDesign.css" text="用户注册" textFill="#177569">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="su_username" layoutX="47.0" layoutY="109.0" prefHeight="34.0" prefWidth="210.0" promptText="用户名" />
+                        <PasswordField fx:id="su_password" layoutX="48.0" layoutY="150.0" prefHeight="34.0" prefWidth="210.0" promptText="密码" />
+                        <Button fx:id="su_singupBtn" layoutX="104.0" layoutY="323.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="92.0" styleClass="login-btn" stylesheets="@loginDesign.css" text="注册" textFill="#43bfbb" />
+                        <PasswordField fx:id="su_answer" layoutX="48.0" layoutY="273.0" prefHeight="34.0" prefWidth="210.0" promptText="答案" />
+                        <ComboBox fx:id="su_question" layoutX="47.0" layoutY="230.0" prefHeight="34.0" prefWidth="210.0" promptText="问题" />
+                        <PasswordField fx:id="su_confirmPass" layoutX="48.0" layoutY="190.0" prefHeight="34.0" prefWidth="210.0" promptText="确认密码" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="side_form" prefHeight="405.0" prefWidth="300.0" styleClass="gradient" stylesheets="@loginDesign.css">
+                    <children>
+                        <Label layoutX="104.0" layoutY="286.0" prefHeight="41.0" prefWidth="92.0" text="创建用户" textFill="#d7c4c4">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="side_createBtn" layoutX="84.0" layoutY="335.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="41.0" prefWidth="121.0" styleClass="create-btn" stylesheets="@loginDesign.css" text="创建新用户" />
+                        <Button fx:id="side_alreadyBtn" layoutX="84.0" layoutY="335.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="41.0" prefWidth="121.0" styleClass="create-btn" stylesheets="@loginDesign.css" text="已有用户" visible="false" />
+                        <FontAwesomeIconView fill="#e4dbdb" glyphName="CLOUD" layoutX="84.0" layoutY="184.0" size="10em" wrappingWidth="131.8571424484253" />
+                        <Label layoutX="89.0" layoutY="191.0" prefHeight="24.0" prefWidth="132.0" text="云购物管理系统" textFill="#fcefef">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>
