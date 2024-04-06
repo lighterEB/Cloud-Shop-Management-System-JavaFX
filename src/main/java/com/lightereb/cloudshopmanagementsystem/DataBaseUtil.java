@@ -1,6 +1,8 @@
 package com.lightereb.cloudshopmanagementsystem;
 
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -54,6 +56,28 @@ public class DataBaseUtil {
         } catch (Exception e) {
             System.err.println("SQL执行异常, 原因：" + e.getMessage());
         }
+    }
+
+    public static Map<String, Object> userInfo(String username, String password) {
+        String sql = "select * from EMPLOYEE where username = ? and password = ?";
+        Map<String, Object> result = new HashMap<String, Object>();
+        con = getConnection();
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                result.put("username", rs.getString("username"));
+                result.put("password", rs.getString("password"));
+                result.put("question", rs.getString("question"));
+                result.put("answer", rs.getString("answer"));
+                result.put("create_date", rs.getDate("create_date"));
+            }
+        }catch (Exception e) {
+            System.err.println("SQL执行异常, 原因：" + e.getMessage());
+        }
+        return result;
     }
 
     public static void closeConnection() {

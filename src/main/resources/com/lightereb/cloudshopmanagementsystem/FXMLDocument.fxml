@@ -21,7 +21,7 @@
             </Label>
             <TextField fx:id="si_username" layoutX="47.0" layoutY="129.0" prefHeight="34.0" prefWidth="210.0" promptText="用户名" stylesheets="@loginDesign.css" />
             <PasswordField fx:id="si_password" layoutX="48.0" layoutY="190.0" prefHeight="34.0" prefWidth="210.0" promptText="密码" stylesheets="@loginDesign.css" />
-            <Button fx:id="si_loginBtn" layoutX="106.0" layoutY="286.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="92.0" styleClass="login-btn" stylesheets="@loginDesign.css" text="登录" textFill="#43bfbb" />
+            <Button fx:id="si_loginBtn" layoutX="106.0" layoutY="286.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="41.0" prefWidth="92.0" styleClass="login-btn" stylesheets="@loginDesign.css" text="登录" textFill="#43bfbb" />
             <Hyperlink fx:id="si_forgotPass" layoutX="43.0" layoutY="239.0" prefHeight="21.0" prefWidth="79.0" text="忘记密码？" />
         </AnchorPane>
         <AnchorPane fx:id="su_signupForm" layoutY="5.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@loginDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="5.0">

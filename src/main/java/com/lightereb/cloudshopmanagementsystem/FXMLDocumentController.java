@@ -11,11 +11,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class FXMLDocumentController implements Initializable {
     @FXML
@@ -65,8 +63,14 @@ public class FXMLDocumentController implements Initializable {
 
     private Boolean flag = false;
 
+    private Alert alert;
+
+    private Connection con;
+
+    /**
+     * 注册
+     */
     public void regBtn() {
-        Alert alert;
         if (su_username.getText().isEmpty() || su_password.getText().isEmpty() || su_question.getSelectionModel().getSelectedItem() == null
                 || su_answer.getText().isEmpty() || su_confirmPass.getText().isEmpty()) {
             alert = new Alert(Alert.AlertType.ERROR);
@@ -79,6 +83,12 @@ public class FXMLDocumentController implements Initializable {
             alert.setTitle("错误");
             alert.setHeaderText(null);
             alert.setContentText("密码不一致，请确认");
+            alert.showAndWait();
+        } else if (su_password.getText().length() < 8) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("错误");
+            alert.setHeaderText(null);
+            alert.setContentText("密码至少是8位");
             alert.showAndWait();
         } else {
             DataBaseUtil.regUsers(
@@ -102,6 +112,35 @@ public class FXMLDocumentController implements Initializable {
             su_answer.setText("");
             flag = true;
             switchForm(new ActionEvent());
+        }
+    }
+
+    /**
+     * 登录
+     */
+    public void loginBtn() {
+        if (si_username.getText().isEmpty() || si_password.getText().isEmpty()) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("错误");
+            alert.setHeaderText(null);
+            alert.setContentText("请输入用户名或密码");
+            alert.showAndWait();
+        } else {
+            Map<String, Object> userInfo = DataBaseUtil.userInfo(si_username.getText(), si_password.getText());
+            if (!userInfo.isEmpty()) {
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("成功");
+                alert.setHeaderText(null);
+                alert.setContentText("登录成功");
+                alert.showAndWait();
+                System.out.printf(userInfo.toString());
+            } else {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("失败");
+                alert.setHeaderText(null);
+                alert.setContentText("用户或密码错误");
+                alert.showAndWait();
+            }
         }
     }
 
@@ -135,13 +174,13 @@ public class FXMLDocumentController implements Initializable {
                 side_createBtn.setVisible(true);
             });
             slider.play();
-            regQuestionList();
             flag = false;
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        con = DataBaseUtil.getConnection();
         su_question.setButtonCell(new ListCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
