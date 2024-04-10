@@ -178,9 +178,23 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * 初始化DB
+     */
+    private void initDB() {
+        con = DataBaseUtil.getConnection();
+        if (con == null) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("错误");
+            alert.setHeaderText(null);
+            alert.setContentText("数据库连接错误");
+            alert.showAndWait();
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        con = DataBaseUtil.getConnection();
+        initDB();
         su_question.setButtonCell(new ListCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
