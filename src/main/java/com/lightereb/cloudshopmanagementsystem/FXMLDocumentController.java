@@ -181,7 +181,7 @@ public class FXMLDocumentController implements Initializable {
     /**
      * 初始化DB
      */
-    private void initDB() {
+    private void initDatabase() {
         con = DataBaseUtil.getConnection();
         if (con == null) {
             alert = new Alert(Alert.AlertType.ERROR);
@@ -194,7 +194,7 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initDB();
+        initDatabase();
         su_question.setButtonCell(new ListCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
