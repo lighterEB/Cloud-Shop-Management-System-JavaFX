@@ -125,6 +125,15 @@ public class FXMLDocumentController implements Initializable {
             alert.setContentText("密码至少是8位");
             alert.showAndWait();
         } else {
+            int i = DataBaseUtil.searchUser(su_username.getText(), con);
+            if (i > 0) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("抱歉");
+                alert.setHeaderText(null);
+                alert.setContentText("用户名已存在。");
+                alert.showAndWait();
+                return;
+            }
             DataBaseUtil.regUsers(
                     su_username.getText(),
                     su_password.getText(),

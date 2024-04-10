@@ -58,6 +58,14 @@ public class DataBaseUtil {
         }
     }
 
+    /**
+     * 查找用户信息
+     * @param username 用户名
+     * @param question 问题
+     * @param answer    答案
+     * @param con   数据库连接
+     * @return  用户数
+     */
     public static int searchUser(String username, String question, String answer, Connection con) {
         String sql = "select count(*) from EMPLOYEE where username = ? and question = ? and answer = ?";
         try {
@@ -72,6 +80,28 @@ public class DataBaseUtil {
         }catch (Exception e) {
             System.err.println("SQL执行异常, 原因：" + e.getMessage());
         }
+        return 0;
+    }
+
+    /**
+     * 查找用户信息
+     * @param username 用户名
+     * @param con   数据库连接
+     * @return  用户数
+     */
+    public static int searchUser(String username, Connection con) {
+        String sql = "select count(*) from EMPLOYEE where username = ?";
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, username);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        }catch (Exception e) {
+            System.err.println("SQL执行异常, 原因：" + e.getMessage());
+        }
+        return 0;
     }
 
     public static Map<String, Object> userInfo(String username, String password) {
