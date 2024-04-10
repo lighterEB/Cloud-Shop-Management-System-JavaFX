@@ -22,8 +22,37 @@
             <TextField fx:id="si_username" layoutX="47.0" layoutY="129.0" prefHeight="34.0" prefWidth="210.0" promptText="用户名" stylesheets="@loginDesign.css" />
             <PasswordField fx:id="si_password" layoutX="48.0" layoutY="190.0" prefHeight="34.0" prefWidth="210.0" promptText="密码" stylesheets="@loginDesign.css" />
             <Button fx:id="si_loginBtn" layoutX="106.0" layoutY="286.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="41.0" prefWidth="92.0" styleClass="login-btn" stylesheets="@loginDesign.css" text="登录" textFill="#43bfbb" />
-            <Hyperlink fx:id="si_forgotPass" layoutX="43.0" layoutY="239.0" prefHeight="21.0" prefWidth="79.0" text="忘记密码？" />
+            <Hyperlink fx:id="si_forgotPass" layoutX="43.0" layoutY="239.0" onAction="#forgotPassBtn" prefHeight="21.0" prefWidth="79.0" text="忘记密码？" />
         </AnchorPane>
+      <AnchorPane fx:id="fg_form" layoutX="300.0" layoutY="5.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@loginDesign.css" visible="false">
+         <children>
+            <Label layoutX="43.0" layoutY="64.0" prefHeight="41.0" prefWidth="92.0" styleClass="head-label" stylesheets="@loginDesign.css" text="忘记密码" textFill="#177569">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="fg_userName" layoutX="49.0" layoutY="114.0" prefHeight="34.0" prefWidth="210.0" promptText="用户名" />
+            <ComboBox fx:id="fg_question" layoutX="48.0" layoutY="158.0" prefHeight="34.0" prefWidth="210.0" promptText="问题" />
+            <TextField fx:id="fg_answer" layoutX="48.0" layoutY="201.0" prefHeight="34.0" prefWidth="210.0" promptText="答案" />
+            <Button fx:id="fg_proceedBtn" layoutX="47.0" layoutY="244.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="210.0" styleClass="login-btn" stylesheets="@loginDesign.css" text="提交" textFill="#43bfbb" />
+            <Button fx:id="fg_backBtn" layoutX="107.0" layoutY="326.0" mnemonicParsing="false" onAction="#backToLogin" prefHeight="41.0" prefWidth="92.0" styleClass="login-btn" stylesheets="@loginDesign.css" text="返回" textFill="#43bfbb" />
+            <FontAwesomeIconView glyphName="ANGLE_LEFT" layoutX="122.0" layoutY="352.0" size="1.5em" wrappingWidth="12.75" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="np_form" layoutX="300.0" layoutY="5.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@loginDesign.css" visible="false">
+         <children>
+            <Label layoutX="43.0" layoutY="64.0" prefHeight="41.0" prefWidth="92.0" styleClass="head-label" stylesheets="@loginDesign.css" text="新的密码" textFill="#177569">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="np_proceedBtn" layoutX="47.0" layoutY="244.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="41.0" prefWidth="210.0" styleClass="login-btn" stylesheets="@loginDesign.css" text="提交" textFill="#43bfbb" />
+            <Button fx:id="np_backBtn" layoutX="107.0" layoutY="326.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="92.0" styleClass="login-btn" stylesheets="@loginDesign.css" text="返回" textFill="#43bfbb" />
+            <FontAwesomeIconView glyphName="ANGLE_LEFT" layoutX="122.0" layoutY="352.0" size="1.5em" wrappingWidth="12.75" />
+            <PasswordField fx:id="np_password" layoutX="47.0" layoutY="122.0" prefHeight="34.0" prefWidth="210.0" promptText="密码" />
+            <PasswordField fx:id="np_passConfirm" layoutX="47.0" layoutY="177.0" prefHeight="34.0" prefWidth="210.0" promptText="确认密码" />
+         </children>
+      </AnchorPane>
         <AnchorPane fx:id="su_signupForm" layoutY="5.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@loginDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="5.0">
             <Label layoutX="43.0" layoutY="64.0" prefHeight="41.0" prefWidth="92.0" styleClass="head-label" stylesheets="@loginDesign.css" text="用户注册" textFill="#177569">
                 <font>

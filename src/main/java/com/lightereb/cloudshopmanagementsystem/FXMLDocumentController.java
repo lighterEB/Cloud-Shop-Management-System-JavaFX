@@ -17,6 +17,39 @@ import java.util.*;
 
 public class FXMLDocumentController implements Initializable {
     @FXML
+    private TextField fg_answer;
+
+    @FXML
+    private Button fg_backBtn;
+
+    @FXML
+    private AnchorPane fg_form;
+
+    @FXML
+    private Button fg_proceedBtn;
+
+    @FXML
+    private ComboBox<String> fg_question;
+
+    @FXML
+    private TextField fg_userName;
+
+    @FXML
+    private Button np_backBtn;
+
+    @FXML
+    private AnchorPane np_form;
+
+    @FXML
+    private PasswordField np_passConfirm;
+
+    @FXML
+    private PasswordField np_password;
+
+    @FXML
+    private Button np_proceedBtn;
+
+    @FXML
     private Hyperlink si_forgotPass;
 
     @FXML
@@ -60,6 +93,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TextField su_username;
+
 
     private Boolean flag = false;
 
@@ -116,6 +150,30 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * 忘记密码
+     */
+    public void forgotPassBtn() {
+        si_loginForm.setVisible(false);
+        fg_form.setVisible(true);
+    }
+
+    /**
+     * 返回登录页
+     */
+    public void backToLogin() {
+        fg_form.setVisible(false);
+        si_loginForm.setVisible(true);
+    }
+
+    /**
+     * 返回忘记密码页
+     */
+    public void backToForgotPass() {
+        np_form.setVisible(false);
+        fg_form.setVisible(true);
+    }
+
+    /**
      * 登录
      */
     public void loginBtn() {
@@ -151,6 +209,7 @@ public class FXMLDocumentController implements Initializable {
         List<String> listQ = new ArrayList<>(Arrays.asList(questionList));
         ObservableList<String> observableList = FXCollections.observableArrayList(listQ);
         su_question.setItems(observableList);
+        fg_question.setItems(observableList);
     }
 
     public void switchForm(ActionEvent event) {
@@ -189,6 +248,23 @@ public class FXMLDocumentController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("数据库连接错误");
             alert.showAndWait();
+        }
+    }
+
+    /**
+     * 跳转新密码页
+     */
+    private void goToNewPassForm() {
+        String question = fg_question.getSelectionModel().getSelectedItem();
+        String answer = fg_answer.getText();
+        String user = fg_userName.getText();
+        if (question.isEmpty() || answer.isEmpty() || user.isEmpty()) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("错误");
+            alert.setHeaderText(null);
+            alert.setContentText("请输入所有信息");
+        }else {
+
         }
     }
 

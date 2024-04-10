@@ -58,6 +58,22 @@ public class DataBaseUtil {
         }
     }
 
+    public static int searchUser(String username, String question, String answer, Connection con) {
+        String sql = "select count(*) from EMPLOYEE where username = ? and question = ? and answer = ?";
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setString(2, question);
+            stmt.setString(3, answer);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        }catch (Exception e) {
+            System.err.println("SQL执行异常, 原因：" + e.getMessage());
+        }
+    }
+
     public static Map<String, Object> userInfo(String username, String password) {
         String sql = "select * from EMPLOYEE where username = ? and password = ?";
         Map<String, Object> result = new HashMap<String, Object>();
